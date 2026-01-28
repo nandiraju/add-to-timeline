@@ -95,3 +95,19 @@
 .vis-timeline, .vis-panel, .vis-item, .vis-text {
   font-family: 'Poppins', sans-serif !important;
 }
+
+.vis-item-content {
+  white-space: normal !important;
+  max-width: 210px !important;
+}
+
+.vis-item.vis-box {
+  width: auto !important;
+  background-color: hsl(210, 100%, 97%) !important;
+  border-color: hsl(210, 100%, 80%) !important;
+}
+
+.dark .vis-item.vis-box {
+  background-color: hsl(222, 47%, 11%) !important;
+  border-color: hsl(217, 33%, 20%) !important;
+}

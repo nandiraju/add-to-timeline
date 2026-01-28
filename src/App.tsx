@@ -91,8 +91,11 @@ function App() {
               </motion.div>
             ) : (
               <motion.div 
+                key="list"
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 variants={containerVariants}
+                initial="hidden"
+                animate="visible"
               >
                 {[...events]
                   .sort((a, b) => a.start.getTime() - b.start.getTime())
@@ -140,7 +143,7 @@ function App() {
                           </CardDescription>
                         </CardHeader>
                         <CardContent className="p-4 pt-4">
-                          <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                          <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-4 leading-relaxed">
                             {event.description}
                           </p>
                         </CardContent>

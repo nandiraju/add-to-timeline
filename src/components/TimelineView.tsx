@@ -20,9 +20,13 @@ export function TimelineView({ events }: TimelineProps) {
       events.map((event) => ({
         id: event.id,
         content: `
-          <div class="p-1">
-            <div class="font-bold">${event.title}</div>
-            <div class="text-xs text-muted-foreground truncate max-w-[150px]">${event.description}</div>
+          <div style="max-width: 200px; white-space: normal; padding: 4px;">
+            <div style="font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; margin-bottom: 2px;">
+              ${event.title}
+            </div>
+            <div style="font-size: 11px; line-height: 1.2; color: #64748b; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
+              ${event.description}
+            </div>
           </div>
         `,
         start: event.start,
@@ -54,18 +58,21 @@ export function TimelineView({ events }: TimelineProps) {
       const formattedItems = events.map((event) => ({
         id: event.id,
         content: `
-          <div class="p-1">
-            <div class="font-bold">${event.title}</div>
-            <div class="text-xs text-muted-foreground truncate max-w-[150px]">${event.description}</div>
+          <div style="max-width: 200px; white-space: normal; padding: 4px;">
+            <div style="font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; margin-bottom: 2px;">
+              ${event.title}
+            </div>
+            <div style="font-size: 11px; line-height: 1.2; color: #64748b; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
+              ${event.description}
+            </div>
           </div>
         `,
         start: event.start,
       }));
       
-      itemsRef.current.clear();
-      itemsRef.current.add(formattedItems);
+      itemsRef.current.update(formattedItems);
       
-      // Fitting the timeline to the new items so they are visible
+      // Fitting the timeline to the items
       if (events.length > 0) {
         timelineRef.current.fit();
       }
